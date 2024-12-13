@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <title>Food App by Vrishab</title>
+        
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            color: #343a40;
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            background-color: #fb721d;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px;
+            width: 40%;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        #div2 {
+            background-color: white;
+            border: 1px solid #dee2e6; 
+            border-left: 10px solid #ff6200;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 50%;
+            margin: auto;
+            width: 40%;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #495057;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input[type="radio"] {
+            margin: 0 10px 0 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #ff6200;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e05d00;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-top: 20px;
+        }
+
+        .footer {
+            font-size: 14px;
+            border: 1px solid black;
+            padding: 0px 10px 0px 10px;
+            width: fit-content;
+            
+            color: rgb(255, 98, 0);
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    </head>
+
+    <body>
+    <center>
+
+        <div id="div1"> <h1>Food App</h1></div>
+        <div id="div2">
+        <form onsubmit="food()">
+            <label>Enter Your Name</label>
+            <br/>
+            <input type="text" id="name" placeholder="Enter Your Name" />
+            <br/><br/>
+            <label>Select the food You like</label>
+            <br/>
+            <input type="radio" name="f" id="ni">North Indian
+            <input type="radio" name="f" id="si">South Indian
+            <input type="radio" name="f" id="ff">Fast Food
+            <br/><br/>
+            <input type="submit"/>
+        </form>
+        <h2 id="msg"></h2>
+        
+        <h2 id="msg2"></h2>
+    </div>
+        <br/><br/><br/><br/><br/>
+        <pre><div class="footer">
+Developed by Vrishab
+Guided by Kamal Sir
+        </div></pre>
+
+    </center>
+
+    <script>
+        function food()
+        {
+            event.preventDefault();
+            let name=document.getElementById("name");
+            let ni=document.getElementById("ni");
+            let si=document.getElementById("si");
+            let ff=document.getElementById("ff");
+            let msg=document.getElementById("msg");
+            let msg2=document.getElementById("msg2");
+
+            let n=name.value;
+            
+            if(n === "")
+            {
+                alert("Name Cannot be left empty");
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            if(n.trim() === "")
+            {
+                alert("Name cannot have only spaces.");
+                name.value="";
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            if(!n.match(/^[A-Za-z ]+$/))
+            {
+                alert("Enter Only APLHABETS not any other things.");
+                name.value="";
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            let choice="";
+            if(ni.checked) choice="North Indian";
+            else if(si.checked) choice="South Indian";
+            else if(ff.checked) choice="Fast Food";
+
+            msg.innerHTML="Name:   " +n;
+            if(choice.length === 0)
+            {
+                choice="You have not chosen any food";
+            }
+            msg2.innerHTML="Your  Choice: "+choice;
+
+        }
+    </script>
+        
+    </body>
+</html>
